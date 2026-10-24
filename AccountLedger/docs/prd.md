@@ -1,4 +1,4 @@
-# Product Requirements Document (PRD)
+<img width="482" height="289" alt="image" src="https://github.com/user-attachments/assets/e1a6c16e-4f7a-4ff5-adf8-496c4baa392b" /><img width="482" height="289" alt="image" src="https://github.com/user-attachments/assets/6d4b189f-252c-472e-9c8c-7a9547127731" /># Product Requirements Document (PRD)
 
 # AccountLedger
 
@@ -19,7 +19,7 @@ Local-first
 | Version            | 1.0                                                    |
 | Date               | 24 October 2026                                        |
 | Author             | Product owner / project team                           |
-| Status             | Draft — pending requirements approval                  |
+| Status             | Draft - pending requirements approval                  |
 | Product type       | Google Chrome browser extension                        |
 | Primary platform   | Desktop Chrome                                         |
 | Architecture       | Local-first, no mandatory backend                      |
@@ -117,7 +117,7 @@ The following capabilities are explicitly excluded from the MVP unless separatel
 
 [Remote Working with Laptop. Woman office work personal profile. Flat Cartoon Vector Illustration, icon Stylish abstract design landing page web](https://images.openai.com/static-rsc-4/mC4sdZDteQkmF8dH6OYF3nU4uMeI_ONc73HuQiubuEQozncNypkjN5HUOydfc_Msi4m-1f4zHr9mYVheY4Q4hHlDU1eGojqWMQuEe-mj31W_y9Arurtvc2OvOIGPPe021URDWo4j1M11ASnZ2x8U2d_k5v0pYVUrqgSmWk-4D7A6sHtKvRKMPciL5qivF-QO?purpose=inline)
 
-Persona A — The multi-account user
+**Persona A - The multi-account user**
 
 Primary audience
 
@@ -127,7 +127,7 @@ Needs: A searchable account directory, email-based filtering, duplicate preventi
 
 [Programmer illustration Images - Free Download on Magnific (formerly Freepik)](https://images.openai.com/static-rsc-4/Ifv5eo6rh_4Rx3Y8U_LSghinZlux5kWtmBAOHVF_R7xu2UXeOexN3y0yHnFLzKc9mejRbXpBsbUxe7DvqDWhQ6jbtAvp4sYpjE1MH1yT41kqOxSLdUAz0xlORG9LKn357zxytov_zlvw0FjIs5IAOhOFjRpRoDGvB_ZVNeTgW4k?purpose=inline)
 
-Persona B — The technical user
+**Persona B - The technical user**
 
 Secondary audience
 
@@ -137,7 +137,7 @@ Needs: Detailed activity records, device attribution, exportable data, and trans
 
 [Girl Is Pointing To Privacy Illustrations - Free Download in SVG, PNG](https://images.openai.com/static-rsc-4/f0UHSZGNyAKnwnXn8zZRj51iGi-8fRQ4TdOt6TdvvAHNyXmfb44Xd3-WUHDKutcDRTbnhqmfQz_JCExTJh93MFfDv5JnTV4nH4yQsXygDZFvXghEP1SHr3Q1X-jsnJk_FK9JFcLlx3nkF6UEhCtELr-szgbSIfE8z014Q55WeYM?purpose=inline)
 
-Persona C — The privacy-conscious user
+**Persona C - The privacy-conscious user**
 
 Privacy-sensitive audience
 
@@ -293,29 +293,8 @@ Scalability note: These are local dataset targets, not a promise of unlimited st
 
 ### 10.1 Information architecture
 
-AccountLedger popup
+<img width="482" height="289" alt="image" src="https://github.com/user-attachments/assets/ff2759b4-489b-4179-9920-81f2bfc82b80" />
 
-Quick search · Recent events · Add account
-
-Email Profiles
-
-Manage email identities
-
-Accounts
-
-Inventory, search, filters
-
-Activity
-
-Timeline and event details
-
-Devices
-
-Device profiles and metadata
-
-Settings & Data Management
-
-Privacy controls, permissions, retention, export, import, deletion
 
 ### 10.2 First-run journey
 
@@ -383,7 +362,22 @@ A backend is not required for the MVP. It should be considered only if a later r
 
 ### 11.2 High-level architecture
 
-\#chatgpt-mermaid-\_r_1ft\_{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;font-size:16px;fill:rgb(237, 237, 237);}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#chatgpt-mermaid-\_r_1ft\_ .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_1ft\_ .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_1ft\_ .error-icon{fill:rgb(48, 48, 48);}#chatgpt-mermaid-\_r_1ft\_ .error-text{fill:rgb(237, 237, 237);stroke:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .edge-thickness-normal{stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .edge-thickness-thick{stroke-width:3.5px;}#chatgpt-mermaid-\_r_1ft\_ .edge-pattern-solid{stroke-dasharray:0;}#chatgpt-mermaid-\_r_1ft\_ .edge-thickness-invisible{stroke-width:0;fill:none;}#chatgpt-mermaid-\_r_1ft\_ .edge-pattern-dashed{stroke-dasharray:3;}#chatgpt-mermaid-\_r_1ft\_ .edge-pattern-dotted{stroke-dasharray:2;}#chatgpt-mermaid-\_r_1ft\_ .marker{fill:rgb(175, 175, 175);stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_1ft\_ .marker.cross{stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_1ft\_ svg{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;font-size:16px;}#chatgpt-mermaid-\_r_1ft\_ p{margin:0;}#chatgpt-mermaid-\_r_1ft\_ .label{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .cluster-label text{fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .cluster-label span{color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .cluster-label span p{background-color:transparent;}#chatgpt-mermaid-\_r_1ft\_ .label text,#chatgpt-mermaid-\_r_1ft\_ span{fill:rgb(237, 237, 237);color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .node rect,#chatgpt-mermaid-\_r_1ft\_ .node circle,#chatgpt-mermaid-\_r_1ft\_ .node ellipse,#chatgpt-mermaid-\_r_1ft\_ .node polygon,#chatgpt-mermaid-\_r_1ft\_ .node path{fill:rgb(9, 23, 44);stroke:rgb(31, 78, 148);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .rough-node .label text,#chatgpt-mermaid-\_r_1ft\_ .node .label text,#chatgpt-mermaid-\_r_1ft\_ .image-shape .label,#chatgpt-mermaid-\_r_1ft\_ .icon-shape .label{text-anchor:middle;}#chatgpt-mermaid-\_r_1ft\_ .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .rough-node .label,#chatgpt-mermaid-\_r_1ft\_ .node .label,#chatgpt-mermaid-\_r_1ft\_ .image-shape .label,#chatgpt-mermaid-\_r_1ft\_ .icon-shape .label{text-align:center;}#chatgpt-mermaid-\_r_1ft\_ .node.clickable{cursor:pointer;}#chatgpt-mermaid-\_r_1ft\_ .root .anchor path{fill:rgb(175, 175, 175)!important;stroke-width:0;stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_1ft\_ .arrowheadPath{fill:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_1ft\_ .edgePath .path{stroke:rgb(175, 175, 175);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .flowchart-link{stroke:rgb(175, 175, 175);fill:none;}#chatgpt-mermaid-\_r_1ft\_ .edgeLabel{background-color:rgb(0, 0, 0);text-align:center;}#chatgpt-mermaid-\_r_1ft\_ .edgeLabel p{background-color:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_1ft\_ .edgeLabel rect{opacity:0.5;background-color:rgb(0, 0, 0);fill:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_1ft\_ .labelBkg{background-color:rgba(0, 0, 0, 0.5);}#chatgpt-mermaid-\_r_1ft\_ .cluster rect{fill:rgb(48, 48, 48);stroke:rgba(255, 255, 255, 0.15);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .cluster text{fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ .cluster span{color:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;font-size:12px;background:rgb(48, 48, 48);border:1px solid rgba(255, 255, 255, 0.15);border-radius:2px;pointer-events:none;z-index:100;}#chatgpt-mermaid-\_r_1ft\_ .flowchartTitleText{text-anchor:middle;font-size:18px;fill:rgb(237, 237, 237);}#chatgpt-mermaid-\_r_1ft\_ rect.text{fill:none;stroke-width:0;}#chatgpt-mermaid-\_r_1ft\_ .icon-shape,#chatgpt-mermaid-\_r_1ft\_ .image-shape{background-color:rgb(0, 0, 0);text-align:center;}#chatgpt-mermaid-\_r_1ft\_ .icon-shape p,#chatgpt-mermaid-\_r_1ft\_ .image-shape p{background-color:rgb(0, 0, 0);padding:2px;}#chatgpt-mermaid-\_r_1ft\_ .icon-shape .label rect,#chatgpt-mermaid-\_r_1ft\_ .image-shape .label rect{opacity:0.5;background-color:rgb(0, 0, 0);fill:rgb(0, 0, 0);}#chatgpt-mermaid-\_r_1ft\_ .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#chatgpt-mermaid-\_r_1ft\_ .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#chatgpt-mermaid-\_r_1ft\_ .node .neo-node{stroke:rgb(31, 78, 148);}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node rect,#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].cluster rect,#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node polygon{stroke:url(#chatgpt-mermaid-\_r_1ft\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].swimlane.cluster rect{filter:none;}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node path{stroke:url(#chatgpt-mermaid-\_r_1ft\_-gradient);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node .neo-line path{stroke:rgb(31, 78, 148);filter:none;}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node circle{stroke:url(#chatgpt-mermaid-\_r_1ft\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].node circle .state-start{fill:#000000;}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].icon-shape .icon{fill:url(#chatgpt-mermaid-\_r_1ft\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_1ft\_ [data-look="neo"].icon-shape .icon-neo path{stroke:url(#chatgpt-mermaid-\_r_1ft\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_1ft\_ .node text{font-size:14px;font-weight:600;letter-spacing:normal;fill:rgb(153, 206, 255);}#chatgpt-mermaid-\_r_1ft\_ .edgeLabels text{font-size:13px;font-weight:600;letter-spacing:-0.08px;fill:rgb(153, 206, 255);}#chatgpt-mermaid-\_r_1ft\_ .node tspan[font-weight="normal"],#chatgpt-mermaid-\_r_1ft\_ .edgeLabels tspan[font-weight="normal"]{font-weight:600;}#chatgpt-mermaid-\_r_1ft\_ .edgeLabel .label rect{opacity:1;rx:13px;ry:13px;fill:rgb(0, 14, 26);stroke:rgb(26, 62, 95);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .node rect,#chatgpt-mermaid-\_r_1ft\_ .node circle,#chatgpt-mermaid-\_r_1ft\_ .node ellipse,#chatgpt-mermaid-\_r_1ft\_ .node polygon,#chatgpt-mermaid-\_r_1ft\_ .node path{fill:rgb(0, 40, 77);stroke:rgba(255, 255, 255, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_1ft\_ .node rect{rx:16px;ry:16px;}#chatgpt-mermaid-\_r_1ft\_ .node.mermaid-decision .label-container{fill:rgb(0, 14, 26);stroke:rgb(26, 62, 95);stroke-dasharray:2px,2px;}#chatgpt-mermaid-\_r_1ft\_ .edgePaths .flowchart-link{stroke:rgb(175, 175, 175);stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;}#chatgpt-mermaid-\_r_1ft\_ .marker{fill:rgb(175, 175, 175);stroke:rgb(175, 175, 175);}#chatgpt-mermaid-\_r_1ft\_ :root{--mermaid-font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;}Chrome UI: Popup / DashboardApplication CoreSupported-Site Content ScriptsDetection AdapterAccount ServiceActivity ServiceDevice RegistryPrivacy and Settings ServiceIndexedDBchrome.storage.localIP / Location AdapterConfigured ProviderOptional, consent-basedExternal provider request
+
+flowchart TD
+    A["Chrome UI: Popup / Dashboard"] --> B["Application Core"]
+    C["Supported-Site Content Scripts"] --> D["Detection Adapter"]
+    D --> B
+    B --> E["Account Service"]
+    B --> F["Activity Service"]
+    B --> G["Device Registry"]
+    B --> H["Privacy and Settings Service"]
+    E --> I[("IndexedDB")]
+    F --> I
+    G --> I
+    H --> J[("chrome.storage.local")]
+    F -. "Optional, consent-based" .-> K["IP / Location Adapter"]
+    K -. "External provider request" .-> L["Configured Provider"]
+
 
 Architectural boundaries
 
@@ -611,14 +605,14 @@ Exit gate: every new integration has a documented threat model, consent flow, da
 
 | Milestone                      | Deliverables                                                   | Approval gate            |
 | ------------------------------ | -------------------------------------------------------------- | ------------------------ |
-| M0 — Requirements approval     | PRD, UX flow, data schema, permission plan                     | Product scope approved   |
-| M1 — Architecture baseline     | Manifest, storage abstraction, module boundaries, test setup   | Architecture review      |
-| M2 — Inventory complete        | Email profiles, accounts, search, filtering, import/export     | Functional acceptance    |
-| M3 — Activity history complete | Timeline, event schema, manual entries, correction/deletion    | Data integrity review    |
-| M4 — Detection prototype       | Supported-site adapter, event prompts, evidence labels         | Detection quality review |
-| M5 — Security hardening        | Permission audit, privacy review, migration and recovery tests | Security approval        |
-| M6 — Release candidate         | Documentation, packaged extension, test report                 | Release approval         |
-| M7 — v2 evaluation             | User feedback, optional integrations proposal                  | Separate scope approval  |
+| M0 - Requirements approval     | PRD, UX flow, data schema, permission plan                     | Product scope approved   |
+| M1 - Architecture baseline     | Manifest, storage abstraction, module boundaries, test setup   | Architecture review      |
+| M2 - Inventory complete        | Email profiles, accounts, search, filtering, import/export     | Functional acceptance    |
+| M3 - Activity history complete | Timeline, event schema, manual entries, correction/deletion    | Data integrity review    |
+| M4 - Detection prototype       | Supported-site adapter, event prompts, evidence labels         | Detection quality review |
+| M5 - Security hardening        | Permission audit, privacy review, migration and recovery tests | Security approval        |
+| M6 - Release candidate         | Documentation, packaged extension, test report                 | Release approval         |
+| M7 - v2 evaluation             | User feedback, optional integrations proposal                  | Separate scope approval  |
 
 ### 13.2 Release-blocking gates
 
@@ -696,7 +690,7 @@ Implementation should be based on current official documentation, checked again 
 - [Chrome storage API](https://developer.chrome.com/docs/extensions/reference/api/storage?utm_source=chatgpt.com)
 - [Chrome scripting API](https://developer.chrome.com/docs/extensions/reference/api/scripting?utm_source=chatgpt.com)
 - [Chrome activeTab permission](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab?utm_source=chatgpt.com)
-- [IndexedDB API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API?utm_source=chatgpt.com)
+- [IndexedDB API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API?utm_source=chatgpt.com)
 - [Chrome Web Store program policies](https://developer.chrome.com/docs/webstore/program-policies/?utm_source=chatgpt.com)
 
 These references are starting points. Confirm the current API behavior, permission rules, and store policies before release.
@@ -705,4 +699,4 @@ These references are starting points. Confirm the current API behavior, permissi
 
 Approve the MVP scope and technical architecture before writing production code. The first implementation should focus on the local account inventory, email profiles, manual activity timeline, device profiles, import/export, and reliable deletion. Automatic detection should follow only after the data model and evidence/verification rules are tested. Public-IP and geolocation enrichment should remain outside the MVP until the consent flow and provider data handling are explicitly approved.
 
-The most important engineering constraint is to build a trustworthy account ledger first—not to promise universal sign-in/sign-out monitoring that a browser extension cannot reliably guarantee.
+The most important engineering constraint is to build a trustworthy account ledger first-not to promise universal sign-in/sign-out monitoring that a browser extension cannot reliably guarantee.
