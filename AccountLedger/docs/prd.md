@@ -117,7 +117,7 @@ The following capabilities are explicitly excluded from the MVP unless separatel
 
 [Remote Working with Laptop. Woman office work personal profile. Flat Cartoon Vector Illustration, icon Stylish abstract design landing page web](https://images.openai.com/static-rsc-4/mC4sdZDteQkmF8dH6OYF3nU4uMeI_ONc73HuQiubuEQozncNypkjN5HUOydfc_Msi4m-1f4zHr9mYVheY4Q4hHlDU1eGojqWMQuEe-mj31W_y9Arurtvc2OvOIGPPe021URDWo4j1M11ASnZ2x8U2d_k5v0pYVUrqgSmWk-4D7A6sHtKvRKMPciL5qivF-QO?purpose=inline)
 
-### Persona A - The multi-account user**
+### Persona A - The multi-account user
 
 **Primary audience:** Uses several email addresses across shopping, education, development, productivity, and social platforms.
 
@@ -356,22 +356,7 @@ A backend is not required for the MVP. It should be considered only if a later r
 
 ### 11.2 High-level architecture
 
-
-flowchart TD
-    A["Chrome UI: Popup / Dashboard"] --> B["Application Core"]
-    C["Supported-Site Content Scripts"] --> D["Detection Adapter"]
-    D --> B
-    B --> E["Account Service"]
-    B --> F["Activity Service"]
-    B --> G["Device Registry"]
-    B --> H["Privacy and Settings Service"]
-    E --> I[("IndexedDB")]
-    F --> I
-    G --> I
-    H --> J[("chrome.storage.local")]
-    F -. "Optional, consent-based" .-> K["IP / Location Adapter"]
-    K -. "External provider request" .-> L["Configured Provider"]
-
+<img width="1796" height="1592" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/e4857664-ff8b-4838-88fb-c254e5ea8d4b" />
 
 Architectural boundaries
 
