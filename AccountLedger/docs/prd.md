@@ -117,33 +117,27 @@ The following capabilities are explicitly excluded from the MVP unless separatel
 
 [Remote Working with Laptop. Woman office work personal profile. Flat Cartoon Vector Illustration, icon Stylish abstract design landing page web](https://images.openai.com/static-rsc-4/mC4sdZDteQkmF8dH6OYF3nU4uMeI_ONc73HuQiubuEQozncNypkjN5HUOydfc_Msi4m-1f4zHr9mYVheY4Q4hHlDU1eGojqWMQuEe-mj31W_y9Arurtvc2OvOIGPPe021URDWo4j1M11ASnZ2x8U2d_k5v0pYVUrqgSmWk-4D7A6sHtKvRKMPciL5qivF-QO?purpose=inline)
 
-**Persona A - The multi-account user**
+### Persona A - The multi-account user**
 
-Primary audience
+**Primary audience:** Uses several email addresses across shopping, education, development, productivity, and social platforms.
 
-Uses several email addresses across shopping, education, development, productivity, and social platforms.
-
-Needs: A searchable account directory, email-based filtering, duplicate prevention, and easy account maintenance.
+**Needs:** A searchable account directory, email-based filtering, duplicate prevention, and easy account maintenance.
 
 [Programmer illustration Images - Free Download on Magnific (formerly Freepik)](https://images.openai.com/static-rsc-4/Ifv5eo6rh_4Rx3Y8U_LSghinZlux5kWtmBAOHVF_R7xu2UXeOexN3y0yHnFLzKc9mejRbXpBsbUxe7DvqDWhQ6jbtAvp4sYpjE1MH1yT41kqOxSLdUAz0xlORG9LKn357zxytov_zlvw0FjIs5IAOhOFjRpRoDGvB_ZVNeTgW4k?purpose=inline)
 
-**Persona B - The technical user**
+### Persona B - The technical user
 
-Secondary audience
+**Secondary audience:** Uses many developer platforms, cloud dashboards, repositories, and technical services.
 
-Uses many developer platforms, cloud dashboards, repositories, and technical services.
-
-Needs: Detailed activity records, device attribution, exportable data, and transparent detection evidence.
+**Needs:** Detailed activity records, device attribution, exportable data, and transparent detection evidence.
 
 [Girl Is Pointing To Privacy Illustrations - Free Download in SVG, PNG](https://images.openai.com/static-rsc-4/f0UHSZGNyAKnwnXn8zZRj51iGi-8fRQ4TdOt6TdvvAHNyXmfb44Xd3-WUHDKutcDRTbnhqmfQz_JCExTJh93MFfDv5JnTV4nH4yQsXygDZFvXghEP1SHr3Q1X-jsnJk_FK9JFcLlx3nkF6UEhCtELr-szgbSIfE8z014Q55WeYM?purpose=inline)
 
-**Persona C - The privacy-conscious user**
+### Persona C - The privacy-conscious user
 
-Privacy-sensitive audience
+**Privacy-sensitive audience:** Wants better account visibility but does not want an account inventory sent to a cloud provider.
 
-Wants better account visibility but does not want an account inventory sent to a cloud provider.
-
-Needs: Local storage, narrow permissions, explicit consent for network enrichment, and reliable deletion.
+**Needs:** Local storage, narrow permissions, explicit consent for network enrichment, and reliable deletion.
 
 ### User assumptions
 
