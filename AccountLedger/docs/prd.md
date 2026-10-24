@@ -1,4 +1,4 @@
-<img width="482" height="289" alt="image" src="https://github.com/user-attachments/assets/e1a6c16e-4f7a-4ff5-adf8-496c4baa392b" /><img width="482" height="289" alt="image" src="https://github.com/user-attachments/assets/6d4b189f-252c-472e-9c8c-7a9547127731" /># Product Requirements Document (PRD)
+# Product Requirements Document (PRD)
 
 # AccountLedger
 
