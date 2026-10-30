@@ -1,6 +1,6 @@
-# AI Workflow Orchestrator — Release Roadmap
+# AI Workflow Orchestrator - Release Roadmap
 
-**Status:** Proposed planning baseline — owner review required  
+**Status:** Proposed planning baseline - owner review required  
 **Repository:** `kumaradoss16/personal-projects/AI Workflow Orchestrator/`  
 **Roadmap:** `v0.1 → v0.2 → v0.3 → v0.4 → v0.5 → v0.9 → v1.0`  
 **Authority:** `SCOPE.md` controls MVP admission. This roadmap decomposes, but does not replace, the existing specifications.
@@ -52,7 +52,7 @@ The release ladder is a delivery decomposition of `SCOPE.md` P0-01–P0-10. It d
 
 ## 4. Release detail and sequencing
 
-### v0.1 — Core foundation
+### v0.1 - Core foundation
 
 **Include:** Python backend skeleton; configuration/startup checks; loopback API and bootstrap authentication boundary; SQLite connection/migration infrastructure; initial project/workflow/run/task/attempt/event persistence needed by the first execution slice; validated workflow/task domain types; DAG validation; sequential scheduler; mock provider; deterministic transform; minimal CLI; API/idempotency contract needed for durable run creation; unit and integration tests.
 
@@ -60,29 +60,29 @@ The release ladder is a delivery decomposition of `SCOPE.md` P0-01–P0-10. It d
 
 **User-visible result:** a developer can create a small workflow and run it through the mock provider using the minimal CLI, then inspect persisted state.
 
-### v0.2 — Durable execution and recovery
+### v0.2 - Durable execution and recovery
 
 Implement the remaining execution lifecycle semantics needed before external providers and tools are introduced: retry eligibility and scheduling, persisted `RETRY_WAIT`, timeouts, cooperative pause/cancel, leases/heartbeats, orphan detection, startup recovery, uncertain external-operation classification, `NEEDS_ATTENTION`, consistency checks, and redacted structured logs.
 
 Do not claim exactly-once external execution. Retry only safe transient operations; side-effecting operations with uncertain outcomes require reconciliation rather than blind retry.
 
-### v0.3 — Provider integration
+### v0.3 - Provider integration
 
 Implement the provider-neutral adapter contract, Ollama integration, and exactly one hosted provider selected by the owner. The hosted provider SDK/version must be recorded in `TECH_STACK.md` before installation. Credentials use OS credential storage and persisted credential references, not plaintext database values. The UI/backend must make external data transmission explicit. Do not add intelligent routing or automatic local/hosted fallback.
 
-### v0.4 — Controlled tools, approvals, and verification
+### v0.4 - Controlled tools, approvals, and verification
 
 Implement only the MVP tool set: project-scoped filesystem read/write, read-oriented Git status/diff/history, and explicitly configured project test/validation commands. Enforce canonical path boundaries, subprocess argument arrays, `shell=False`, sanitized environments, bounded execution/output, and approval policy. Approval is bound to a canonical action fingerprint, single-use by default, and invalidated by material action changes. Add deterministic validators and atomic artifact writes with SHA-256 integrity evidence.
 
-### v0.5 — Desktop integration
+### v0.5 - Desktop integration
 
 Build the Tauri shell and TypeScript UI against stable `/api/v1` contracts. UI areas are limited to functional requirements in `DESIGN.md`: overview, project/workflow management, execution/task details, approvals, provider configuration, tool permissions/settings, history/logs/artifacts/validation. Use bounded polling, not SSE. Include real empty/loading/error/denied/unavailable states; no fake metrics or nonfunctional controls.
 
-### v0.9 — Release candidate
+### v0.9 - Release candidate
 
 Run full end-to-end, persistence, recovery, provider, tool, approval, security, API, UI and Windows packaging verification. Verify SQLite WAL backup/restore on Windows. Establish clean-clone CI and repeatable build/test instructions. Produce installation, configuration, permissions, limitations, backup and recovery documentation. Classify defects as release blockers or non-blocking improvements.
 
-### v1.0 — Production MVP
+### v1.0 - Production MVP
 
 No new feature work. Resolve release blockers, rerun the complete acceptance suite, verify every in-scope requirement, freeze dependencies and scope, publish release notes and known limitations, and produce the Windows release. A feature-complete UI without verified reliability/security evidence is not a production release.
 
