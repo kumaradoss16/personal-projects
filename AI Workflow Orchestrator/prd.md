@@ -855,3 +855,452 @@ The recommended first end-to-end demonstration is:
 **Requirement → Plan → Implement → Run Tests → Review Diff → Request Approval → Produce Verified Report**
 
 This single workflow should prove durable execution, provider integration, tool permissions, verification, observability, and recovery before the project expands into a general-purpose multi-agent platform.
+
+
+---
+
+## 19. Unified Project Workspace & AI Activity Consolidation
+
+**Feature ID:** FEAT-01  
+**Priority:** P0 foundation; advanced integrations P1/P2  
+**Category:** Project Management, Context Management, AI Tool Integration
+
+### 19.1 Feature Overview
+
+The Unified Project Workspace enables users to consolidate project-related content created or modified across multiple AI applications, models, development environments, and workflow executions into one dedicated local project workspace.
+
+A user may work on the same project using ChatGPT, Claude, Gemini, Cursor, VS Code-based assistants, Ollama, or other supported tools. The orchestrator shall provide one organized location for relevant requirements, prompts, responses, code, documents, workflows, research, generated artifacts, and execution records.
+
+The system shall record which tool and model contributed to each captured activity, when the activity occurred, how it was captured, how long it took when measurable, and which project files or workflows it relates to.
+
+This feature is not merely a file collection utility. It shall preserve relationships between project requirements, AI contributions, code changes, workflow executions, and verified results.
+
+### 19.2 Objectives
+
+- Create one dedicated local workspace per project.
+- Consolidate project material from multiple AI tools and development environments.
+- Preserve prompts, responses, source code, documents, workflows, and generated artifacts.
+- Track tool, provider, and model attribution.
+- Maintain a chronological and searchable activity timeline.
+- Record activity timestamps and durations when reliably available.
+- Detect conflicting file versions before merging or replacing content.
+- Preserve provenance and recoverability.
+- Reuse consolidated project context in subsequent workflows.
+- Keep project ownership and data local by default.
+
+### 19.3 FR-14: Unified Project Directory — P0
+
+The system shall allow users to create or associate a dedicated local directory with each project.
+
+Users shall be able to:
+- Select an existing project directory or create a new workspace.
+- Configure or customize the workspace folder structure.
+- Rename, archive, export, and back up a workspace.
+- Open the workspace in the operating system's file manager.
+- Browse project files, captured activities, workflows, and artifacts.
+- Configure which directories are canonical source locations and which are managed archive locations.
+
+The system shall avoid creating unnecessary duplicate copies of canonical source files. It shall support references to files in an existing repository as well as managed workspace artifacts.
+
+### 19.4 FR-15: Multi-Tool Project Association — P0
+
+Users shall be able to associate supported AI tools and development environments with a project.
+
+Initial candidate tools include:
+- ChatGPT.
+- Claude.
+- Gemini.
+- Cursor.
+- VS Code and compatible AI extensions.
+- Ollama and other supported local model runtimes.
+- Custom API-based AI applications.
+
+The initial release shall support manual import and explicit user-created activity records. Workflow-generated model calls and artifacts shall be captured automatically by the orchestrator.
+
+The system shall not assume it can access private conversations from external applications without a supported, authorized integration. Each integration shall declare its available capture capabilities and permissions.
+
+### 19.5 FR-16: Content Consolidation — P0
+
+The system shall organize project-related content, including:
+- Product requirements and technical specifications.
+- Architecture and design documents.
+- Prompts, instructions, and AI responses.
+- Source code, patches, diffs, and test results.
+- Markdown, text, and supported document files.
+- Workflow definitions, runs, and outputs.
+- Research notes and references.
+- Generated files, reports, and exports.
+- Debugging notes and relevant error logs.
+
+Imported content shall retain available source metadata. Original files shall remain unchanged unless the user explicitly authorizes a managed copy or replacement.
+
+### 19.6 FR-17: AI Activity Provenance — P0
+
+Each captured activity shall maintain a structured record containing:
+- Activity ID and project ID.
+- Source application/tool.
+- Provider and model identifier, when known.
+- Activity type (prompt, response, code change, import, tool call, workflow run, validation, etc.).
+- Activity start and completion timestamps, when available.
+- Capture/import timestamp.
+- Duration, when measurable.
+- Related workflow/task identifiers, when applicable.
+- Related file and artifact references.
+- Capture method and source reference, when available.
+- Content checksum or version reference, where applicable.
+- Metadata confidence or verification status.
+
+The system shall distinguish verified metadata, user-supplied metadata, and inferred metadata. Unknown values shall remain unknown rather than being fabricated.
+
+### 19.7 FR-18: Project Activity Timeline — P0
+
+The system shall provide a chronological project timeline showing captured work across AI tools, models, workflows, and local development activity.
+
+Example:
+- 09:15 — ChatGPT — PRD requirements imported.
+- 10:05 — Claude — Backend architecture response captured.
+- 11:20 — Cursor — Project files modified.
+- 12:10 — Ollama — Local model experiment completed.
+- 13:00 — Test Runner — Integration tests executed.
+- 13:15 — Orchestrator — Verification completed.
+
+Users shall be able to filter and search by:
+- Date and time.
+- Application, provider, or model.
+- Activity type.
+- Workflow or task.
+- File or artifact.
+- Execution status.
+
+The timeline shall distinguish the time an activity occurred from the time it was imported or captured.
+
+### 19.8 FR-19: Execution and Activity Time Tracking — P0
+
+The system shall record timing information when available:
+- Activity start time.
+- Activity completion time.
+- Duration.
+- Capture/import time.
+- Provider request duration.
+- Workflow and task execution duration.
+- File modification time, where relevant and available.
+
+For externally generated or manually imported content, the system shall not invent start times or execution durations. Unknown timing fields shall be null or explicitly marked unavailable.
+
+Timestamps shall retain timezone information or be normalized to UTC with the original timezone offset preserved where available.
+
+### 19.9 FR-20: Conflict Detection and File Versioning — P0
+
+The system shall detect potential conflicts when multiple tools or imports produce changes to the same canonical project file.
+
+It shall:
+- Compare normalized file paths and content checksums.
+- Identify added, modified, deleted, and unchanged files.
+- Show differences between competing versions.
+- Preserve previous versions or Git references according to the configured policy.
+- Require confirmation before replacing canonical files.
+- Record the source activity and tool attribution for accepted changes.
+- Provide recovery of prior managed versions.
+
+The MVP may use Git history and content checksums rather than implementing a custom version-control engine. The system shall not claim to merge semantic code changes automatically unless a tested merge operation is available.
+
+### 19.10 FR-21: Project Context Retrieval — P1
+
+Before a workflow runs, the orchestrator should retrieve relevant project materials, such as:
+- Requirements and constraints.
+- Architecture documents and decisions.
+- Relevant prompts and AI responses.
+- Source files and tests.
+- Previous workflow results.
+- Research notes and known issues.
+
+Context selection shall be relevance-based and bounded. The orchestrator shall not indiscriminately transmit the entire project directory to a model.
+
+Users shall be able to inspect and approve the context selected for external provider requests. Project content shall follow the configured local-versus-hosted data policy.
+
+### 19.11 FR-22: Workspace Synchronization — P1
+
+The system should coordinate content between:
+- The canonical project directory.
+- Supported development environments.
+- Imported AI activity.
+- Workflow-generated artifacts.
+- Managed project archive folders.
+
+Synchronization shall be explicit, conflict-aware, and auditable. Cloud synchronization is outside the initial local-first release.
+
+### 19.12 FR-23: Import and Capture Sources — P0/P1
+
+Initial capture methods:
+- Manual file and folder import.
+- Supported Markdown, JSON, TXT, and document imports.
+- Workflow-generated model calls, outputs, and artifacts.
+- User-created activity records.
+- Explicit local project-file monitoring with user permission.
+
+Later capture methods:
+- Official provider APIs.
+- Supported application connectors.
+- IDE extensions.
+- Browser extensions.
+- CLI capture utilities.
+- MCP adapters.
+
+The system shall not silently scrape private browser sessions or collect authentication cookies, passwords, or tokens. Integrations shall use documented APIs or explicit user-authorized capture mechanisms.
+
+### 19.13 Suggested Workspace Structure
+
+The following is a configurable default. Users may customize names and locations.
+
+```text
+Project-Workspace/
+├── 00_PROJECT_CONTROL/
+│   ├── project.json
+│   ├── project-overview.md
+│   ├── requirements.md
+│   ├── decisions.md
+│   └── project-timeline.json
+├── 01_AI_INTERACTIONS/
+│   ├── ChatGPT/
+│   ├── Claude/
+│   ├── Gemini/
+│   ├── Cursor/
+│   └── Local-Models/
+├── 02_WORKFLOWS/
+│   ├── definitions/
+│   ├── executions/
+│   └── results/
+├── 03_SOURCE_CODE/
+├── 04_DOCUMENTATION/
+├── 05_RESEARCH/
+├── 06_ARTIFACTS/
+├── 07_EXECUTION_LOGS/
+└── 08_ARCHIVE/
+```
+
+The canonical source repository may remain outside this structure. In that case, the workspace shall store references and provenance metadata rather than duplicating the entire repository.
+
+### 19.14 Example Activity Record
+
+```json
+{
+  "activity_id": "act_001",
+  "project_id": "project_001",
+  "source": {
+    "application": "Claude",
+    "provider": "Anthropic",
+    "model": "model_identifier",
+    "capture_method": "manual_import"
+  },
+  "activity_type": "code_generation",
+  "title": "Backend API implementation",
+  "started_at": null,
+  "completed_at": null,
+  "captured_at": "2026-10-30T09:30:00+05:30",
+  "duration_ms": null,
+  "workflow_id": null,
+  "related_files": [
+    "src/backend/api.py"
+  ],
+  "content_reference": "01_AI_INTERACTIONS/Claude/response_001.md",
+  "metadata_confidence": "partially_verified"
+}
+```
+
+Null timing values are intentional when source timestamps or duration are unavailable.
+
+### 19.15 User Interface Requirements
+
+The Project Workspace view shall provide:
+- Project overview and workspace location.
+- File explorer and artifact browser.
+- Associated tools and known models.
+- Chronological activity timeline.
+- Workflow and execution history.
+- Search and filters.
+- File conflict and version notifications.
+- Import, export, backup, and archive controls.
+
+The overview may show counts of captured activities, participating tools, known models, artifacts, and workflow runs. These metrics shall be calculated from recorded data and shall not imply complete capture of activity in external applications.
+
+### 19.16 Acceptance Criteria
+
+1. A user can create or associate a dedicated workspace with a project.
+2. A user can import content from at least two different AI tools using supported manual capture methods.
+3. Imported content is associated with the selected project.
+4. Available source tool and model attribution is preserved.
+5. Unknown or unverified metadata is explicitly represented.
+6. Activities are displayed chronologically using event time when available and capture time as a fallback.
+7. Start, completion, capture, and duration fields are not conflated.
+8. Activity records can link to related files, workflows, and artifacts.
+9. Conflicting file changes are detected before canonical replacement.
+10. Previous managed versions or Git references are recoverable.
+11. Project content can be searched and filtered.
+12. Workspace export and restore preserve activity metadata and file references or report unavailable external references.
+13. No passwords, cookies, or authentication tokens are collected to achieve consolidation.
+14. External AI transmission follows explicit provider configuration and user authorization.
+15. The workspace can represent externally performed work without falsely claiming automatic or complete capture.
+
+### 19.17 Success Metrics
+
+Initial validation targets:
+- Users can create a workspace without assistance.
+- Users can consolidate content from at least two AI tools.
+- Captured activities retain all available source attribution.
+- Users can locate a previous artifact through search or timeline.
+- No canonical source file is silently overwritten by an import.
+- Users can recover previous managed versions.
+- Users can identify which tools and models contributed to a project based on recorded activity.
+
+---
+
+## 20. Updated User Experience and Navigation
+
+The primary navigation shall include a dedicated **Project Workspaces** area.
+
+Recommended navigation:
+1. Dashboard
+2. Projects / Workspaces
+3. Workflows
+4. Execution History
+5. Approvals
+6. Providers and Tools
+7. Settings
+
+Each project workspace shall provide tabs or sections for:
+- Overview.
+- Files and Artifacts.
+- AI Activity.
+- Workflows.
+- Timeline.
+- Context and Decisions.
+- Settings and Integrations.
+
+The project workspace is the organizing boundary for project-specific context, activity, workflow runs, and artifacts. A workflow run shall belong to a project, and its model calls, tool invocations, and outputs shall be linked to that project where applicable.
+
+---
+
+## 21. Updated Core Data Model
+
+The following entities extend Section 10.
+
+### ProjectWorkspace
+- `id`
+- `project_id`
+- `root_directory`
+- `workspace_config`
+- `created_at`
+- `updated_at`
+
+### ToolIntegration
+- `id`
+- `project_id`
+- `application_name`
+- `provider_name`
+- `integration_type`
+- `capabilities`
+- `authorization_status`
+- `created_at`
+
+### AIActivity
+- `id`
+- `project_id`
+- `tool_integration_id`
+- `provider_name`
+- `model_identifier`
+- `activity_type`
+- `title`
+- `event_started_at`
+- `event_completed_at`
+- `captured_at`
+- `duration_ms`
+- `capture_method`
+- `metadata_confidence`
+- `content_reference`
+- `content_checksum`
+
+### ActivityFileReference
+- `id`
+- `activity_id`
+- `file_path`
+- `file_role`
+- `content_checksum`
+- `version_reference`
+
+### WorkspaceVersion
+- `id`
+- `project_id`
+- `file_path`
+- `content_checksum`
+- `source_activity_id`
+- `version_reference`
+- `created_at`
+
+Activity records shall reference workflow, task, artifact, and project records using stable identifiers where applicable. Large content payloads should be stored as files or artifact blobs; SQLite should store metadata and references rather than unnecessarily duplicating large documents.
+
+---
+
+## 22. Updated MVP Scope and Release Priorities
+
+The workspace foundation is part of the MVP, but broad automatic integrations are not.
+
+### MVP additions
+- Create and associate a local project workspace.
+- Configurable default folder structure.
+- Manual import of project files and AI conversation exports.
+- Automatic capture of orchestrator-owned model calls, workflow events, and generated artifacts.
+- Activity records with tool/model attribution and capture timestamps.
+- Timeline and basic search/filtering.
+- File checksums and basic conflict warnings.
+- Explicit confirmation before replacing canonical files.
+- Local export and backup.
+
+### Post-MVP additions
+- IDE extensions and richer coding-agent activity capture.
+- Browser extension integrations.
+- Official provider conversation integrations where supported.
+- CLI capture.
+- Advanced project context retrieval.
+- More advanced Git-based version comparison and recovery.
+- Optional synchronization across devices.
+
+### MVP scope boundary
+
+The initial release shall not promise universal automatic synchronization of private conversations across ChatGPT, Claude, Gemini, Cursor, or other third-party applications. Capture depends on each application's supported APIs, export formats, extension capabilities, and user authorization.
+
+---
+
+## 23. Updated Risks and Mitigations
+
+**Risk: External AI applications do not expose conversation data through supported APIs.**  
+Mitigation: Support manual imports and explicit capture first; add official integrations only where supported.
+
+**Risk: Workspace becomes a duplicate and confusing copy of the source repository.**  
+Mitigation: Distinguish canonical source directories from managed artifact/archive directories and use references where appropriate.
+
+**Risk: Conflicting AI-generated code overwrites working code.**  
+Mitigation: Use checksums, diffs, version references, and explicit approval before canonical replacement.
+
+**Risk: Activity metadata is incomplete or inaccurate.**  
+Mitigation: Preserve event time separately from capture time and label unknown, user-supplied, and verified metadata.
+
+**Risk: Context retrieval transmits sensitive project data to hosted models.**  
+Mitigation: Show selected context, apply provider data policies, and require user authorization for external transmission.
+
+**Risk: File monitoring captures unrelated or sensitive files.**  
+Mitigation: Require explicit directory selection, provide exclusion rules, and avoid monitoring outside approved project roots.
+
+---
+
+## 24. Updated Product Direction
+
+AI Workflow Orchestrator shall combine two connected capabilities:
+
+1. **Workflow orchestration:** Plan, execute, validate, recover, and observe multi-step AI work.
+2. **Unified project workspace:** Consolidate project context, multi-tool contributions, code, documents, workflows, artifacts, and activity history.
+
+The workspace becomes the persistent project memory and provenance layer. The orchestration engine uses that project context to execute future work while preserving traceability.
+
+The product promise is:
+
+**One project. One organized workspace. Multiple AI tools and models. Traceable contributions. Durable workflows. Verified results.**
