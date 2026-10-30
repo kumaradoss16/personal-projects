@@ -1,7 +1,7 @@
 # AI Workflow Orchestrator
 
 > **Project status:** Documentation baseline / proposed MVP specification.  
-> **Target:** MVP v1.0 — local-first Windows desktop application.  
+> **Target:** MVP v1.0 - local-first Windows desktop application.  
 > **Primary purpose:** Coordinate AI-assisted engineering workflows with durable execution, explicit authorization, deterministic verification, and recoverable state.
 
 This directory contains the product and engineering specifications for AI Workflow Orchestrator. This README is the **primary navigation and onboarding document**. It summarizes the system and directs contributors to the authoritative specification for each engineering domain; it does not replace those specifications.
@@ -73,11 +73,11 @@ Exact versions, lockfile rules, allowed dependencies, and conditional approvals 
 
 The proposed architecture is a **local-first modular monolith**:
 
-1. **Tauri desktop shell and TypeScript UI** — user interaction and presentation; not an authority for workflow state or permissions.
-2. **Python/FastAPI backend** — authoritative application boundary for workflow state, scheduling, authorization, provider/tool execution, persistence, and recovery.
-3. **Domain and application layers** — workflow/task invariants, state transitions, policies, orchestration use cases, and coordination.
-4. **Infrastructure adapters** — SQLite repositories, local artifact storage, hosted/local model providers, and narrowly scoped Git/test/file operations.
-5. **Control and verification** — action-scoped approvals, policy enforcement, deterministic validation, event history, logs, and recovery.
+1. **Tauri desktop shell and TypeScript UI** - user interaction and presentation; not an authority for workflow state or permissions.
+2. **Python/FastAPI backend** - authoritative application boundary for workflow state, scheduling, authorization, provider/tool execution, persistence, and recovery.
+3. **Domain and application layers** - workflow/task invariants, state transitions, policies, orchestration use cases, and coordination.
+4. **Infrastructure adapters** - SQLite repositories, local artifact storage, hosted/local model providers, and narrowly scoped Git/test/file operations.
+5. **Control and verification** - action-scoped approvals, policy enforcement, deterministic validation, event history, logs, and recovery.
 
 The backend owns authoritative workflow and task state. Model output, frontend state, provider responses, and tool output are untrusted inputs and must not directly authorize actions or mutate authoritative state.
 
@@ -179,14 +179,14 @@ If a required specification is missing, contradictory, or insufficient, stop and
 
 All AI-assisted implementation must follow [AGENT_WORKFLOW.md](./AGENT_WORKFLOW.md):
 
-1. **Discover** — read the entry instructions and relevant specifications; inspect actual code, tests, configuration, Git status, and existing conventions.
-2. **Classify** — confirm MVP scope, risk, affected domains, and approval requirements.
-3. **Plan** — identify files/layers, data/API/security impact, dependencies, tests, and documentation changes.
-4. **Obtain approval** — wait for owner approval for material architecture, schema, API, security, dependency, scope, or destructive changes.
-5. **Implement incrementally** — make the smallest complete change within approved boundaries.
-6. **Verify** — run relevant tests, static checks, security/failure-path tests, and build checks; report exact commands and observed outcomes.
-7. **Review** — inspect the final diff for unintended changes, data loss, secret exposure, and contract drift.
-8. **Document and hand off** — update affected specifications and provide the structured implementation report required by the agent SOP.
+1. **Discover** - read the entry instructions and relevant specifications; inspect actual code, tests, configuration, Git status, and existing conventions.
+2. **Classify** - confirm MVP scope, risk, affected domains, and approval requirements.
+3. **Plan** - identify files/layers, data/API/security impact, dependencies, tests, and documentation changes.
+4. **Obtain approval** - wait for owner approval for material architecture, schema, API, security, dependency, scope, or destructive changes.
+5. **Implement incrementally** - make the smallest complete change within approved boundaries.
+6. **Verify** - run relevant tests, static checks, security/failure-path tests, and build checks; report exact commands and observed outcomes.
+7. **Review** - inspect the final diff for unintended changes, data loss, secret exposure, and contract drift.
+8. **Document and hand off** - update affected specifications and provide the structured implementation report required by the agent SOP.
 
 No AI agent may silently expand MVP scope, bypass approval, weaken tests/security, or claim unrun checks passed.
 
