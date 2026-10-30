@@ -1,8 +1,8 @@
-# Execution Engine Specification — AI Workflow Orchestrator
+# Execution Engine Specification - AI Workflow Orchestrator
 
 **Document:** `EXECUTION_ENGINE.md`  
 **Version:** 1.0  
-**Status:** Proposed — authoritative execution contract after project-owner acceptance  
+**Status:** Proposed - authoritative execution contract after project-owner acceptance  
 **Target:** MVP v1.0  
 **Execution model:** Local, durable, sequential, dependency-aware orchestration  
 **Last reviewed:** 2026-10-30
@@ -23,11 +23,11 @@ It must be read before implementing or modifying:
 
 Read this document with:
 
-- `prd.md` — product goals and functional requirements.
-- `ARCHITECTURE.md` — modular-monolith boundaries and execution design.
-- `SCOPE.md` — approved MVP capabilities and exclusions.
-- `TECH_STACK.md` — approved technologies and dependencies.
-- `DATABASE.md`, if created — canonical schema and persistence constraints.
+- `prd.md` - product goals and functional requirements.
+- `ARCHITECTURE.md` - modular-monolith boundaries and execution design.
+- `SCOPE.md` - approved MVP capabilities and exclusions.
+- `TECH_STACK.md` - approved technologies and dependencies.
+- `DATABASE.md`, if created - canonical schema and persistence constraints.
 
 If these documents conflict, do not invent behavior. Stop, describe the conflict, and request an explicit decision. Update the affected documents before implementing the resolution.
 
@@ -122,15 +122,15 @@ Rows are current states; columns are target states. Only marked transitions are 
 
 | From  To | DRAFT | READY | RUNNING | WAITING_FOR_APPROVAL | PAUSED | SUCCEEDED | FAILED | CANCELLED | NEEDS_ATTENTION |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| DRAFT | — | ✓ | — | — | — | — | — | — | — |
-| READY | ✓ | — | ✓ | — | — | — | — | — | — |
-| RUNNING | — | — | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| WAITING_FOR_APPROVAL | — | — | ✓ | — | ✓ | — | ✓ | ✓ | ✓ |
-| PAUSED | — | — | ✓ | ✓ | — | — | ✓ | ✓ | ✓ |
-| SUCCEEDED | — | — | — | — | — | — | — | — | — |
-| FAILED | — | — | — | — | — | — | — | — | — |
-| CANCELLED | — | — | — | — | — | — | — | — | — |
-| NEEDS_ATTENTION | — | — | ✓ | ✓ | ✓ | — | ✓ | ✓ | — |
+| DRAFT | - | ✓ | - | - | - | - | - | - | - |
+| READY | ✓ | - | ✓ | - | - | - | - | - | - |
+| RUNNING | - | - | - | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| WAITING_FOR_APPROVAL | - | - | ✓ | - | ✓ | - | ✓ | ✓ | ✓ |
+| PAUSED | - | - | ✓ | ✓ | - | - | ✓ | ✓ | ✓ |
+| SUCCEEDED | - | - | - | - | - | - | - | - | - |
+| FAILED | - | - | - | - | - | - | - | - | - |
+| CANCELLED | - | - | - | - | - | - | - | - | - |
+| NEEDS_ATTENTION | - | - | ✓ | ✓ | ✓ | - | ✓ | ✓ | - |
 
 Transition conditions:
 
@@ -180,16 +180,16 @@ Terminal workflow states are immutable. A new run must be created to execute a c
 
 | From  To | PENDING | READY | RUNNING | WAITING_FOR_APPROVAL | RETRY_WAIT | SUCCEEDED | FAILED | SKIPPED | CANCELLED | NEEDS_ATTENTION |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| PENDING | — | ✓ | — | — | — | — | — | ✓ | ✓ | ✓ |
-| READY | — | — | ✓ | ✓ | — | — | — | ✓ | ✓ | ✓ |
-| RUNNING | — | — | — | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
-| WAITING_FOR_APPROVAL | — | ✓ | — | — | — | — | ✓ | — | ✓ | ✓ |
-| RETRY_WAIT | — | ✓ | — | — | — | — | ✓ | — | ✓ | ✓ |
-| SUCCEEDED | — | — | — | — | — | — | — | — | — | — |
-| FAILED | — | — | — | — | — | — | — | — | — | — |
-| SKIPPED | — | — | — | — | — | — | — | — | — | — |
-| CANCELLED | — | — | — | — | — | — | — | — | — | — |
-| NEEDS_ATTENTION | — | ✓ | — | ✓ | — | — | ✓ | — | ✓ | — |
+| PENDING | - | ✓ | - | - | - | - | - | ✓ | ✓ | ✓ |
+| READY | - | - | ✓ | ✓ | - | - | - | ✓ | ✓ | ✓ |
+| RUNNING | - | - | - | ✓ | ✓ | ✓ | ✓ | - | ✓ | ✓ |
+| WAITING_FOR_APPROVAL | - | ✓ | - | - | - | - | ✓ | - | ✓ | ✓ |
+| RETRY_WAIT | - | ✓ | - | - | - | - | ✓ | - | ✓ | ✓ |
+| SUCCEEDED | - | - | - | - | - | - | - | - | - | - |
+| FAILED | - | - | - | - | - | - | - | - | - | - |
+| SKIPPED | - | - | - | - | - | - | - | - | - | - |
+| CANCELLED | - | - | - | - | - | - | - | - | - | - |
+| NEEDS_ATTENTION | - | ✓ | - | ✓ | - | - | ✓ | - | ✓ | - |
 
 Transition conditions:
 
