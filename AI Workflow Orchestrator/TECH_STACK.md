@@ -1,8 +1,8 @@
-# Approved Technology Stack — AI Workflow Orchestrator
+# Approved Technology Stack - AI Workflow Orchestrator
 
 **Document:** `TECH_STACK.md`  
 **Version:** 1.0  
-**Status:** Proposed baseline — binding after project-owner acceptance  
+**Status:** Proposed baseline - binding after project-owner acceptance  
 **Target:** MVP v1.0  
 **Deployment:** Windows-first, local-first desktop application  
 **Last reviewed:** 2026-10-30
@@ -15,11 +15,11 @@ This document is the authoritative registry of technologies approved for AI Work
 
 Read this document together with:
 
-- `prd.md` — product requirements and user outcomes.
-- `ARCHITECTURE.md` — system boundaries, module responsibilities, and data flow.
-- `SCOPE.md` — approved MVP scope and exclusions.
-- `design.md` — user interface and visual design requirements.
-- `AGENTS.md`, if present — repository-specific contributor instructions.
+- `prd.md` - product requirements and user outcomes.
+- `ARCHITECTURE.md` - system boundaries, module responsibilities, and data flow.
+- `SCOPE.md` - approved MVP scope and exclusions.
+- `design.md` - user interface and visual design requirements.
+- `AGENTS.md`, if present - repository-specific contributor instructions.
 
 When technology choices conflict, stop and request a decision. Do not resolve conflicts by silently choosing a new framework or dependency.
 
@@ -33,7 +33,7 @@ When technology choices conflict, stop and request a decision. Do not resolve co
 6. Existing repository configuration must be inspected before changing versions or build systems. Do not perform a migration merely to match a preferred version.
 7. Exact resolved dependency versions must be committed through the appropriate lockfiles. Version ranges in this document define the permitted compatibility line, not permission to install arbitrary latest releases.
 
-**Important status note:** This document records the approved target baseline derived from the current PRD, architecture, and scope. Where the repository has not yet established an implementation or lockfile, the version line below is the target to adopt during foundation setup—not a claim that the dependency is already installed or tested. The project owner must accept this baseline before it is treated as ratified.
+**Important status note:** This document records the approved target baseline derived from the current PRD, architecture, and scope. Where the repository has not yet established an implementation or lockfile, the version line below is the target to adopt during foundation setup-not a claim that the dependency is already installed or tested. The project owner must accept this baseline before it is treated as ratified.
 
 ## 2. Core stack and versions
 
@@ -307,10 +307,10 @@ Patch/minor updates within the approved version policy may proceed through norma
 
 ### 6.5 Outcomes
 
-- `APPROVE` — exact package/technology and intended use are authorized; registry update is required before installation.
-- `REJECT` — do not add or use it.
-- `DEFER` — keep the proposal out of the current implementation.
-- `REPLACE` — approve a defined migration that removes an existing technology; update architecture and migration plan first.
+- `APPROVE` - exact package/technology and intended use are authorized; registry update is required before installation.
+- `REJECT` - do not add or use it.
+- `DEFER` - keep the proposal out of the current implementation.
+- `REPLACE` - approve a defined migration that removes an existing technology; update architecture and migration plan first.
 
 Approval is limited to the named package, version policy, and purpose. It is not blanket approval for related packages or a new framework ecosystem.
 
