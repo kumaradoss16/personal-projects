@@ -1,4 +1,4 @@
-# AI Workflow Orchestrator — Dashboard Design System
+# AI Workflow Orchestrator - Dashboard Design System
 
 **Document:** Product UI / UX Design Specification  
 **Version:** 1.0  
@@ -14,7 +14,7 @@
 
 ## 1. Design vision
 
-Design AI Workflow Orchestrator as a premium engineering operations console: calm, precise, information-dense, and trustworthy. It should feel like a serious desktop tool for controlling long-running AI work—not a generic chatbot, analytics template, or neon cyberpunk dashboard.
+Design AI Workflow Orchestrator as a premium engineering operations console: calm, precise, information-dense, and trustworthy. It should feel like a serious desktop tool for controlling long-running AI work-not a generic chatbot, analytics template, or neon cyberpunk dashboard.
 
 The interface must make five things immediately understandable:
 
@@ -109,7 +109,7 @@ The current project context should be visible in the top bar and should be prese
 
 ### 3.1 Color palette
 
-Use a neutral graphite foundation with a restrained electric-violet accent. The accent is for primary actions, selected navigation, focus, and active visualization—not for every card or border.
+Use a neutral graphite foundation with a restrained electric-violet accent. The accent is for primary actions, selected navigation, focus, and active visualization-not for every card or border.
 
 | Token | Hex | Usage |
 |---|---|---|
@@ -185,7 +185,7 @@ Use one consistent outline icon family (Lucide-style). Default icon size 16 px i
 
 ---
 
-## 4. Dashboard — Overview
+## 4. Dashboard - Overview
 
 ### Purpose
 
@@ -457,7 +457,7 @@ Approval must be action-scoped. If the action parameters change, require a new a
 
 ### Purpose
 
-Provide a navigable visual map of the project's work history and relationships. The graph is for exploration and provenance—not a replacement for workflow execution state or the workflow editor.
+Provide a navigable visual map of the project's work history and relationships. The graph is for exploration and provenance-not a replacement for workflow execution state or the workflow editor.
 
 ### Node types
 
@@ -941,35 +941,35 @@ All components must support loading, empty, error, and disabled states as applic
 
 Build in this order to keep the UI aligned with the implementation roadmap:
 
-### UI-01 — Application shell
+### UI-01 - Application shell
 - Sidebar, topbar, routing, theme tokens, keyboard focus.
 - Local service connection state.
 
-### UI-02 — Overview dashboard
+### UI-02 - Overview dashboard
 - Active workflows, attention required, provider health, recent activity.
 - Usage snapshot only when usage records exist.
 
-### UI-03 — Projects
+### UI-03 - Projects
 - Project list, create/open project, project overview, files/artifacts.
 
-### UI-04 — Workflow definition and execution
+### UI-04 - Workflow definition and execution
 - Structured workflow editor.
 - Run detail, task states, attempts, logs, validation.
 
-### UI-05 — Approvals
+### UI-05 - Approvals
 - Approval queue, exact action scope, approve/reject flow.
 
-### UI-06 — Providers and tools
+### UI-06 - Providers and tools
 - Provider setup/status, credential status, capability display, tool permissions.
 
-### UI-07 — Activity and conversation import
+### UI-07 - Activity and conversation import
 - Manual import, import validation, conversation library, transcript and provenance.
 - Do not imply unsupported automatic capture.
 
-### UI-08 — Project graph
+### UI-08 - Project graph
 - Bounded graph query, filters, node inspector, list alternative.
 
-### UI-09 — Usage & costs
+### UI-09 - Usage & costs
 - Token and request analytics, context metadata, pricing provenance, estimates.
 
 This order follows the PRD and architecture roadmap. Graph and advanced analytics are not blockers for the durable orchestration MVP.
