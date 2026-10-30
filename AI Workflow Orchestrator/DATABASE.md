@@ -1,8 +1,8 @@
-# Database and Persistence Specification — AI Workflow Orchestrator
+# Database and Persistence Specification - AI Workflow Orchestrator
 
 **Document:** `DATABASE.md`  
 **Version:** 1.0  
-**Status:** Proposed — authoritative data contract after project-owner acceptance  
+**Status:** Proposed - authoritative data contract after project-owner acceptance  
 **Target:** MVP v1.0  
 **Database:** SQLite  
 **Driver:** Python 3.12 standard-library `sqlite3`  
@@ -25,11 +25,11 @@ It must be read **before** any developer or AI coding agent:
 
 The pre-flight review must also read the relevant requirements in:
 
-- `prd.md` — product requirements and initial logical data entities.
-- `ARCHITECTURE.md` — modular-monolith boundaries and local persistence topology.
-- `SCOPE.md` — approved MVP capabilities and exclusions.
-- `TECH_STACK.md` — approved database engine, driver, and migration tooling.
-- `EXECUTION_ENGINE.md` — execution state machines, atomicity, idempotency, and recovery.
+- `prd.md` - product requirements and initial logical data entities.
+- `ARCHITECTURE.md` - modular-monolith boundaries and local persistence topology.
+- `SCOPE.md` - approved MVP capabilities and exclusions.
+- `TECH_STACK.md` - approved database engine, driver, and migration tooling.
+- `EXECUTION_ENGINE.md` - execution state machines, atomicity, idempotency, and recovery.
 
 ### 1.1 Authority and change control
 
