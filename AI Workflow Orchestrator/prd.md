@@ -1304,3 +1304,464 @@ The workspace becomes the persistent project memory and provenance layer. The or
 The product promise is:
 
 **One project. One organized workspace. Multiple AI tools and models. Traceable contributions. Durable workflows. Verified results.**
+
+---
+
+## 25. Visual Project Map and Relationship Graph
+
+**Feature ID:** FEAT-02  
+**Priority:** P0 for relationship data; P1 for interactive graph  
+**Category:** Project Visualization, Workflow Observability, Knowledge Navigation
+
+### 25.1 Feature Overview
+
+The platform shall provide an interactive visual representation of each project as a connected graph of nodes and relationships. The graph shall show how project requirements, decisions, workflows, tasks, AI tools, providers, models, files, artifacts, and validation results relate to one another.
+
+This is a data-backed project relationship map, not a decorative diagram. It shall be generated from persisted project records and updated as supported activities and workflow events are captured.
+
+### 25.2 Node Types
+
+Supported node types shall include:
+- Project and project workspace.
+- Requirement, objective, and technical decision.
+- Workflow definition and workflow run.
+- Task and task attempt.
+- AI application or development tool.
+- Provider and model.
+- Tool invocation or external service.
+- Source file, changed file, and file version.
+- Prompt, response, research item, and document.
+- Artifact, test result, validation result, and approval.
+- Issue, error, and recovery event.
+
+Each node shall have a stable identifier, node type, display label, project association, provenance reference, and relevant metadata. Secrets and sensitive values shall never be exposed in graph labels or metadata.
+
+### 25.3 Relationship Types
+
+The graph shall support explicit, typed relationships such as:
+- CONTAINS — a project contains a workflow, file, or artifact.
+- DEPENDS_ON — a task depends on another task.
+- IMPLEMENTS — a task or file implements a requirement.
+- EXECUTED_BY — a task was executed by a provider, model, agent, or tool.
+- GENERATED — an activity generated an artifact or file.
+- MODIFIED — an activity modified a file or version.
+- VALIDATED_BY — output was checked by a test or validation.
+- REVIEWED_BY — output was reviewed by a tool or human.
+- DERIVED_FROM — an artifact or decision originated from another activity.
+- FOLLOWED_BY — an activity or workflow step followed another.
+- ASSOCIATED_WITH — a supported association where a stronger relationship is not known.
+
+Relationships shall include source and target identifiers, relationship type, event timestamp where available, and provenance. The system shall not infer causality solely because two activities occurred close together in time.
+
+### 25.4 FR-24: Project Relationship Graph — P0/P1
+
+The system shall:
+- Generate a graph from persisted project, workflow, activity, and artifact records.
+- Display nodes and typed connecting edges.
+- Allow users to select a node and inspect its details and provenance.
+- Navigate from a node to its associated project page, workflow run, activity, file, or artifact.
+- Filter by node type, relationship type, date range, provider, model, tool, workflow, and execution status.
+- Search nodes by name or identifier.
+- Support zoom, pan, fit-to-view, and graph reset.
+- Provide a readable list/table alternative for accessibility and large graphs.
+- Show when graph data is incomplete because an external tool is not connected or an activity was not captured.
+- Update the graph when new records are persisted, without requiring users to redraw it.
+
+### 25.5 FR-25: Workflow Execution Graph — P1
+
+The system should provide a focused graph view for an individual workflow definition or run:
+- Show task dependency edges and execution order.
+- Distinguish pending, running, waiting for approval, succeeded, failed, skipped, cancelled, and needs-attention states.
+- Show retries as separate task attempts rather than overwriting prior attempts.
+- Display the executor, provider, model, and relevant artifacts for each task.
+- Allow users to open task logs, inputs, outputs, validation results, and approval records.
+- Reflect persisted execution state; the visualization shall not be treated as the authoritative state machine.
+
+### 25.6 Graph Interaction and Layout
+
+The initial implementation may use a deterministic graph layout or a supported graph visualization library. It shall prioritize readability and stable navigation over decorative animation.
+
+Required interactions:
+- Pan, zoom, fit-to-view, and reset.
+- Select one or multiple nodes.
+- Expand or collapse related nodes.
+- Filter visible node and edge categories.
+- Highlight upstream dependencies and downstream outputs.
+- Open the underlying record from a selected node.
+- Switch between project-wide and workflow-focused views.
+
+The graph shall remain usable for large projects through filtering, progressive expansion, grouping, or neighborhood views. It shall not render every historical event simultaneously by default.
+
+### 25.7 Acceptance Criteria
+
+1. A project with recorded workflows and activities can be rendered as a connected graph.
+2. Nodes and edges are based on persisted records and explicit relationships.
+3. Selecting a node opens the correct underlying record.
+4. Workflow dependencies are represented with direction and relationship type.
+5. Node status reflects the latest persisted state while preserving attempt history.
+6. Filters and search narrow the visible graph correctly.
+7. Newly persisted activities appear after the graph refresh/update cycle.
+8. Missing external capture is represented as a coverage limitation, not proof that no activity occurred.
+9. A list or table alternative is available.
+10. Graph rendering does not modify workflow state or execute tools.
+
+---
+
+## 26. AI Usage, Token, Context, and Cost Analytics
+
+**Feature ID:** FEAT-03  
+**Priority:** P0 for orchestrator-owned usage records; P1 for consolidated analytics across integrations  
+**Category:** AI Observability, Usage Analytics, Resource Management
+
+### 26.1 Feature Overview
+
+The platform shall measure and report AI resource consumption across projects, workflows, activities, providers, models, and supported tools.
+
+Users shall be able to understand:
+- Input and output token consumption.
+- Total token usage and cached token usage when reported.
+- Context-window usage for a model request.
+- Which providers, models, and AI tools were used.
+- How frequently each model/tool was used.
+- Request counts, failures, retries, latency, and throughput.
+- Estimated or provider-reported cost when pricing and usage data are available.
+- Usage trends by project, workflow, task, provider, model, and time period.
+
+The system shall distinguish values measured directly by a provider from locally estimated or manually imported values.
+
+### 26.2 FR-26: Token Usage Tracking — P0
+
+For every orchestrator-managed model request, the system shall capture token usage metadata when the provider exposes it.
+
+Supported fields shall include, where available:
+- Input/prompt tokens.
+- Output/completion tokens.
+- Total tokens.
+- Cached input tokens.
+- Reasoning tokens or other provider-specific token categories.
+- Token counting method.
+- Usage metadata source.
+- Whether values are provider-reported, locally estimated, imported, or unavailable.
+
+The system shall normalize common fields while preserving provider-specific raw usage metadata in a safe, versioned structure. It shall not assume token definitions are identical across providers or modalities.
+
+For providers that do not return usage, the system may estimate tokens using a compatible tokenizer or provider-supported counting endpoint. Estimated values must be labelled as estimates and must not overwrite provider-reported values.
+
+### 26.3 FR-27: Context-Window Utilization — P0/P1
+
+For each model request, the system should record:
+- Model context-window capacity, when known and verified.
+- Input tokens submitted.
+- Output-token limit configured.
+- Actual output tokens, when reported.
+- Reserved or estimated context tokens, if applicable.
+- Context utilization percentage when numerator and denominator are comparable and known.
+- Remaining estimated context capacity.
+- Context assembly method and timestamp.
+
+The interface shall distinguish:
+1. Request input usage: tokens included in the current request.
+2. Model context capacity: maximum context supported by the selected model under the relevant configuration.
+3. Conversation/project context: content selected and assembled by the orchestrator for the request.
+4. Output allowance: configured maximum output tokens, not the same as actual output usage.
+
+The system shall not calculate a context percentage when the model limit or token count is unknown, incompatible, or not comparable. It shall not imply that a provider's full hidden internal context is observable.
+
+Where supported, the orchestrator should warn users before a request approaches configured context thresholds and may recommend context reduction or summarization. Automatic truncation or summarization shall follow explicit project policies and preserve source references.
+
+### 26.4 FR-28: AI Tool, Provider, and Model Usage Analytics — P0/P1
+
+The system shall aggregate recorded usage by:
+- Project.
+- AI application or tool.
+- Provider.
+- Model identifier and version where available.
+- Workflow and workflow run.
+- Task and task attempt.
+- Date range.
+- Request type or activity type.
+
+Metrics shall include:
+- Request count.
+- Successful and failed request count.
+- Retry and fallback count.
+- Input, output, and total tokens.
+- Cached and reasoning tokens when available.
+- Average and percentile latency when sufficient observations exist.
+- Estimated or reported cost when calculable.
+- Last-used timestamp.
+
+External AI tool usage shall only be included when supported activity records or integrations provide the required metadata. Manual imports may contribute counts or metadata only when those values are present or explicitly supplied. The dashboard shall not imply comprehensive tracking of external applications that are not connected.
+
+### 26.5 FR-29: Cost and Budget Tracking — P1
+
+Where reliable pricing data and usage quantities are available, the system should calculate estimated request and aggregate costs.
+
+Cost records shall include:
+- Provider and model identifier.
+- Pricing source and effective date/version.
+- Input, output, cached, and other billable token categories where applicable.
+- Currency.
+- Calculated cost.
+- Whether the amount is provider-reported, calculated from published pricing, or manually configured.
+- Pricing-data retrieval/update timestamp.
+
+The system shall not present an estimate as an invoice or guaranteed charge. Provider billing adjustments, discounts, subscriptions, free tiers, taxes, and non-token charges may not be represented.
+
+Users should be able to configure optional project, provider, model, or time-period budgets. When a configured threshold is reached, the system may warn, pause eligible future requests, or require approval according to the user's policy. It shall not interrupt an in-flight request unless the provider and executor support safe cancellation.
+
+### 26.6 FR-30: Usage Dashboard and Reports — P0/P1
+
+The application shall provide a usage dashboard with:
+- Total input, output, and total tokens for the selected period.
+- Usage by provider and model.
+- Usage by connected AI tool.
+- Request counts and success/failure rates.
+- Context utilization for supported requests.
+- Estimated/reported costs when available.
+- Usage trends over time.
+- Most-used models and tools.
+- Project and workflow usage breakdown.
+- Data coverage and measurement-quality indicators.
+
+Users shall be able to filter by project, date range, provider, model, tool, workflow, and task. Users should be able to export usage summaries as CSV or JSON.
+
+The dashboard shall support a project-level summary and a global view across projects. Empty or unavailable metrics shall be displayed as unavailable rather than zero when no reliable measurement exists.
+
+### 26.7 FR-31: Usage Alerts and Limits — P1
+
+Users should be able to configure:
+- Token thresholds per project or provider.
+- Estimated cost budgets.
+- Request-count limits.
+- Context utilization warning thresholds.
+- Provider/model allowlists and denylists.
+- Fallback restrictions when a budget or usage limit is reached.
+
+When a limit is reached, the orchestrator shall apply the configured policy: notify, require approval, pause future eligible requests, or reject new requests. It shall record the policy decision and the usage snapshot that triggered it.
+
+Limits are enforced only for traffic routed through the orchestrator or integrations that provide sufficiently reliable usage data. The product shall not claim to control independent usage inside third-party applications.
+
+### 26.8 Measurement, Accuracy, and Data Coverage Rules
+
+- Provider-reported token usage is authoritative for that provider request, subject to the provider's documented semantics.
+- Local tokenizer estimates must be labelled estimated and identify the tokenizer/model version where possible.
+- Imported or user-entered values must be labelled imported or user-supplied.
+- Missing values must remain null/unknown, not zero.
+- Token counts from different providers may not be directly comparable because tokenization and billing definitions differ.
+- Context-window limits must be tied to a specific model identifier/version and source.
+- Cost calculations must use versioned pricing records and retain the calculation inputs.
+- Do not count the same request twice when importing duplicate activity records; use stable provider request IDs where available, otherwise deduplication fingerprints with cautious reconciliation.
+- Usage analytics shall never require collecting provider credentials from unrelated applications.
+- Usage records shall not store raw API keys or expose sensitive prompt content in dashboard labels.
+
+### 26.9 Suggested Usage Record
+
+Illustrative JSON structure:
+
+    {
+      "usage_id": "usage_001",
+      "project_id": "project_001",
+      "activity_id": "act_001",
+      "workflow_run_id": "run_001",
+      "task_run_id": "taskrun_001",
+      "provider": "provider_name",
+      "model": "model_identifier",
+      "source_tool": "orchestrator",
+      "request_id": "provider_request_id",
+      "input_tokens": 4200,
+      "output_tokens": 850,
+      "total_tokens": 5050,
+      "cached_input_tokens": null,
+      "reasoning_tokens": null,
+      "context_window_tokens": 128000,
+      "context_utilization_percent": 3.28,
+      "measurement_method": "provider_reported",
+      "usage_recorded_at": "2026-10-30T09:30:00+05:30",
+      "latency_ms": 8200,
+      "cost_amount": null,
+      "cost_currency": null,
+      "cost_method": "unavailable"
+    }
+
+This is illustrative only. Values and provider semantics must be validated for the actual adapter. Context utilization is valid only when input token count and context-window capacity refer to compatible definitions.
+
+### 26.10 Updated Data Model
+
+Add the following entities to Sections 10 and 21:
+
+**ModelCatalogEntry**
+- id
+- provider_name
+- model_identifier
+- model_version
+- context_window_tokens
+- max_output_tokens
+- capabilities
+- metadata_source
+- verified_at
+
+**AIRequestUsage**
+- id
+- project_id
+- activity_id
+- workflow_run_id
+- task_run_id
+- provider_name
+- model_identifier
+- source_tool
+- provider_request_id
+- input_tokens
+- output_tokens
+- total_tokens
+- cached_input_tokens
+- reasoning_tokens
+- context_window_tokens
+- context_utilization_percent
+- measurement_method
+- usage_metadata_version
+- latency_ms
+- usage_recorded_at
+
+**PricingRecord**
+- id
+- provider_name
+- model_identifier
+- currency
+- input_price_per_unit
+- output_price_per_unit
+- cached_input_price_per_unit
+- billing_unit
+- effective_from
+- effective_until
+- source_reference
+- retrieved_at
+
+**UsageBudget**
+- id
+- scope_type
+- scope_id
+- period
+- token_limit
+- cost_limit
+- currency
+- threshold_policy
+- enabled
+
+**UsageAggregation**
+- id
+- scope_type
+- scope_id
+- period_start
+- period_end
+- aggregation_version
+- computed_at
+- metrics_reference
+
+Raw request usage records shall be retained as the source of truth. Aggregates shall be rebuildable from those records.
+
+### 26.11 Acceptance Criteria
+
+1. Every orchestrator-managed request stores available usage metadata.
+2. Input and output token counts are separately represented.
+3. Provider-reported, estimated, imported, and unavailable measurements are distinguishable.
+4. Unknown measurements remain null rather than being recorded as zero.
+5. Usage can be filtered and aggregated by project, provider, model, tool, workflow, task, and date.
+6. Context utilization is shown only when its inputs are valid and comparable.
+7. The interface distinguishes input usage, context capacity, and output allowance.
+8. Cost calculations retain pricing source, version, currency, and calculation method.
+9. Duplicate imported usage records are detected or flagged for reconciliation.
+10. Configured limits affect only requests the orchestrator can observe and control.
+11. The dashboard clearly communicates incomplete external-tool coverage.
+12. Usage records survive application restarts and can be exported.
+13. Usage analytics do not expose credentials or require unauthorized third-party access.
+
+### 26.12 Success Metrics
+
+- All orchestrator-managed requests with provider usage metadata have a persisted usage record.
+- Users can identify token consumption by project, provider, and model.
+- Users can inspect context utilization for supported requests.
+- Users can identify which connected tools and models account for recorded activity.
+- Usage and cost reports clearly disclose estimation and coverage limitations.
+- Usage aggregates can be rebuilt from raw records without data loss.
+
+---
+
+## 27. Updated Navigation and Project Workspace Experience
+
+Add the following navigation and project workspace views:
+- Project Map: interactive relationship graph for project entities and activity.
+- Usage & Analytics: token, context, provider, model, tool, latency, and cost analytics.
+- Workflow Graph: dependency and execution-state visualization for a workflow.
+
+Within a project workspace, the overview shall summarize:
+- Project status and recent activity.
+- Project relationship map preview.
+- Connected AI tools, providers, and known models.
+- Recorded token usage and context metrics.
+- Workflow execution status.
+- Artifacts and recent changes.
+
+The project map and analytics dashboard shall be separate views with cross-navigation. Selecting a model or tool in the graph may open its usage analytics; selecting a usage record may navigate to the originating activity, task, or workflow.
+
+---
+
+## 28. Updated MVP and Release Priorities
+
+### P0 — MVP foundations
+- Persist explicit project, workflow, task, activity, artifact, and relationship records.
+- Capture usage metadata for orchestrator-managed model requests whenever available.
+- Store provider-reported versus estimated usage provenance.
+- Provide basic project-level token totals and request counts.
+- Provide a simple workflow dependency visualization or readable dependency view.
+- Expose enough relationship data to support the later project graph.
+
+### P1 — First advanced analytics and visualization release
+- Interactive project relationship graph.
+- Interactive workflow execution graph.
+- Project-wide and global usage dashboards.
+- Context-window utilization for supported models.
+- Provider/model/tool usage comparisons.
+- Versioned pricing and estimated cost reporting.
+- Configurable usage thresholds and budget alerts.
+- CSV/JSON usage exports.
+
+### P2 — Advanced capabilities
+- Usage analytics from additional authorized external integrations.
+- Advanced graph grouping, layout, and relationship exploration.
+- Historical model catalog and context-limit changes.
+- Advanced budget policies and routing optimization based on measured usage.
+- Cross-project analytics and customizable reports.
+
+The MVP shall not be delayed by a complex graph engine or comprehensive third-party usage integrations. First persist correct relationship and usage data, then build advanced visualization and aggregation on top of it.
+
+---
+
+## 29. Updated Risks and Mitigations
+
+**Risk: The graph becomes visually complex and unusable for large projects.**  
+Mitigation: Provide filtering, grouping, progressive expansion, neighborhood views, and a list/table alternative.
+
+**Risk: Relationships are incorrectly inferred from coincidental activity.**  
+Mitigation: Store explicit typed relationships with provenance; label uncertain associations and never present temporal proximity as causation.
+
+**Risk: Token counts differ between providers or model modalities.**  
+Mitigation: Preserve provider-specific usage metadata and measurement methods; normalize only comparable fields.
+
+**Risk: Context-window metadata is stale or inaccurate.**  
+Mitigation: Version model catalog records and retain metadata sources and verification timestamps.
+
+**Risk: Cost dashboards imply exact billing when they only estimate.**  
+Mitigation: Label provider-reported and calculated costs distinctly; version pricing and disclose excluded billing factors.
+
+**Risk: Third-party tool usage is incomplete.**  
+Mitigation: Show integration coverage and missing metadata; never imply complete usage monitoring without a supported capture path.
+
+**Risk: Usage analytics expose sensitive project content.**  
+Mitigation: Store usage metadata separately from prompt bodies, redact secrets, and avoid showing prompt content in aggregate dashboards.
+
+---
+
+## 30. Updated Product Promise
+
+**One project. One connected visual map. Multiple AI tools and models. Measurable token and context usage. Traceable contributions. Durable workflows. Verified results.**
