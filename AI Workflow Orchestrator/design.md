@@ -10,6 +10,8 @@
 **Design direction:** Premium dark engineering workspace  
 **Related documents:** `prd.md`, `technical-architecture.md`
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3c778ab8-89ac-4a90-9714-29dfcca6bfd3" />
+
 ---
 
 ## 1. Design vision
