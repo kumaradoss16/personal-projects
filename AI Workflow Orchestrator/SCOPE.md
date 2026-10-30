@@ -1,8 +1,8 @@
-# Scope Definition — AI Workflow Orchestrator
+# Scope Definition - AI Workflow Orchestrator
 
 **Document:** SCOPE.md  
 **Version:** 1.0  
-**Status:** Proposed — MVP baseline  
+**Status:** Proposed - MVP baseline  
 **Target release:** MVP v1.0  
 **Product type:** Local-first desktop application  
 **Primary platform:** Windows  
@@ -12,7 +12,7 @@
 
 ## 1. Purpose and authority
 
-This document establishes the product and engineering boundaries for the AI Workflow Orchestrator MVP. It defines what may be designed, implemented, tested, and released as part of the MVP—and what must remain deferred unless explicitly approved.
+This document establishes the product and engineering boundaries for the AI Workflow Orchestrator MVP. It defines what may be designed, implemented, tested, and released as part of the MVP-and what must remain deferred unless explicitly approved.
 
 The project documentation has distinct responsibilities:
 
@@ -69,7 +69,7 @@ The MVP is successful when a user can complete the end-to-end scenario above rep
 - Clearly identify failed, cancelled, interrupted, and uncertain operations.
 - Produce test evidence for critical execution, persistence, permission, and recovery paths.
 
-## 3. In scope — MVP v1.0
+## 3. In scope - MVP v1.0
 
 The following capabilities are approved for MVP implementation.
 
@@ -242,7 +242,7 @@ A visual element is in scope only when it supports an approved functional requir
 - Windows packaging and clean-install verification.
 - Documentation for installation, configuration, permissions, known limitations, and recovery.
 
-## 4. Out of scope — explicitly excluded from MVP
+## 4. Out of scope - explicitly excluded from MVP
 
 The following items must not be implemented as part of MVP v1.0 without an approved scope change.
 
@@ -322,7 +322,7 @@ MVP security controls remain mandatory; excluding enterprise security products d
 - Performance optimization without a measured bottleneck.
 - Fake data or placeholder functionality presented as working product behavior.
 
-## 5. Deferred roadmap — not MVP commitments
+## 5. Deferred roadmap - not MVP commitments
 
 Deferred items are candidates for later evaluation, not promises or automatic commitments. Each item requires a separate product decision, technical review, and acceptance criteria before implementation.
 
@@ -365,10 +365,10 @@ Any feature, integration, infrastructure component, or behavior outside Section 
 
 ### 6.2 Decision outcomes
 
-- `KEEP_DEFERRED` — retain the item for future consideration; do not implement now.
-- `REJECT` — do not pursue the proposal.
-- `APPROVE_FOR_MVP` — add the explicitly described capability to the MVP scope.
-- `REPLACE_EXISTING_SCOPE` — approve a change that removes or replaces an existing MVP commitment.
+- `KEEP_DEFERRED` - retain the item for future consideration; do not implement now.
+- `REJECT` - do not pursue the proposal.
+- `APPROVE_FOR_MVP` - add the explicitly described capability to the MVP scope.
+- `REPLACE_EXISTING_SCOPE` - approve a change that removes or replaces an existing MVP commitment.
 
 ### 6.3 Approval rules
 
