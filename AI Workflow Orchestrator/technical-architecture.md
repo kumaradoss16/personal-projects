@@ -1,4 +1,4 @@
-# AI Workflow Orchestrator — Technical Architecture
+# AI Workflow Orchestrator - Technical Architecture
 
 **Document type:** Technical Architecture and Security Design  
 **Status:** Proposed baseline for implementation  
@@ -867,31 +867,31 @@ Use deterministic fake providers in CI. Never call paid APIs in ordinary unit te
 
 ## 18. Implementation Roadmap and Exit Gates
 
-### Phase 0 — Architecture foundation
+### Phase 0 - Architecture foundation
 
 Deliver domain entities, state transitions, SQLite migrations, local API authentication, threat model, provider/tool contracts, and security test plan.
 
 **Exit:** State and database invariants tested; local API design reviewed; no adapter can bypass domain boundaries.
 
-### Phase 1 — Safe durable orchestration MVP
+### Phase 1 - Safe durable orchestration MVP
 
 Deliver project management, versioned workflows, sequential scheduler, one hosted provider and Ollama, durable attempts/events, cancellation/recovery, basic approval gates, read-only Git status/diff, controlled test execution, artifact storage, validation, and token usage capture.
 
 **Exit:** Restart/recovery and path/permission tests pass; secrets absent from logs/config; end-to-end workflow completes with human approval.
 
-### Phase 2 — Workspace and visualization
+### Phase 2 - Workspace and visualization
 
 Deliver unified workspace, manual external activity import, approved file monitoring, provenance, relationship persistence, workflow dependency visualization, project graph preview, and bounded graph queries.
 
 **Exit:** Graph navigates to correct records; imported content cannot execute tools; missing capture coverage is disclosed.
 
-### Phase 3 — Analytics and routing
+### Phase 3 - Analytics and routing
 
 Deliver immutable usage records, model catalog, context metadata provenance, project/global token analytics, provider/model/tool filters, versioned pricing, estimated costs, budgets, alerts, and configurable routing/fallback.
 
 **Exit:** Reported and estimated values remain distinct; aggregates rebuild; budget controls only future eligible requests.
 
-### Phase 4 — Integrations and hardening
+### Phase 4 - Integrations and hardening
 
 Deliver IDE/CLI integrations, MCP capabilities, advanced graph exploration, optional isolated execution, additional provider adapters, and platform packaging.
 
@@ -954,4 +954,4 @@ Implementation is ready when:
 - Security tests are included in CI.
 - MVP excludes unsupported assumptions such as unrestricted autonomous execution or automatic access to private third-party conversations.
 
-**Architecture principle:** Build a small, durable, secure execution core first. Add visual graphs, analytics, integrations, and advanced automation as projections and adapters around that core—not as shortcuts around its security and state guarantees.
+**Architecture principle:** Build a small, durable, secure execution core first. Add visual graphs, analytics, integrations, and advanced automation as projections and adapters around that core-not as shortcuts around its security and state guarantees.
