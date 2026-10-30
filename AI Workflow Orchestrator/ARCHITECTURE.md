@@ -1,4 +1,4 @@
-# AI Workflow Orchestrator — System Architecture
+# AI Workflow Orchestrator - System Architecture
 
 **Document:** Architecture Specification  
 **Version:** 1.0  
@@ -10,7 +10,7 @@
 
 This document defines how to implement AI Workflow Orchestrator. The PRD defines product scope and behavior; design.md defines the desktop information architecture and visual system. This document turns those requirements into an implementation blueprint.
 
-The product is a local-first desktop application for designing, executing, observing, validating, and recovering multi-step AI workflows across model providers and controlled developer tools. Its differentiator is durable, observable, verifiable execution—not another chatbot or unrestricted agent framework.
+The product is a local-first desktop application for designing, executing, observing, validating, and recovering multi-step AI workflows across model providers and controlled developer tools. Its differentiator is durable, observable, verifiable execution-not another chatbot or unrestricted agent framework.
 
 ### 1.1 Non-negotiable principles
 
@@ -467,7 +467,7 @@ Use a dedicated adapter and configurable local endpoint. Detect available models
 
 MVP tools: Git status/diff, scoped file read/write, and allowlisted test execution. Use argument arrays and shell-disabled process creation. Never concatenate model output into shell commands. Bound output, duration, and process resources. Require approval for protected writes, commits, pushes, or destructive operations according to policy.
 
-### 10.4 MCP — future integration
+### 10.4 MCP - future integration
 
 MCP is a follow-up integration, not an MVP dependency. When added:
 - Connect only to explicitly registered servers.
@@ -482,7 +482,7 @@ MCP is a follow-up integration, not an MVP dependency. When added:
 
 MCP must not bypass orchestrator policy or state management.
 
-### 10.5 n8n — optional future integration
+### 10.5 n8n - optional future integration
 
 n8n is not required by the PRD MVP. If introduced, treat it as an external automation executor, never as the authoritative workflow engine:
 - Trigger only allowlisted workflow IDs.
@@ -857,7 +857,7 @@ Do not create duplicate document roots if the repository already stores product 
 
 ## 19. Implementation sequence
 
-### Phase 0 — Foundation
+### Phase 0 - Foundation
 
 - Confirm runtime versions and repository structure.
 - Establish Tauri/TypeScript and FastAPI lifecycle.
@@ -867,7 +867,7 @@ Do not create duplicate document roots if the repository already stores product 
 
 **Exit:** Desktop starts/stops backend securely; database initializes and survives restart.
 
-### Phase 1 — Durable workflow core (MVP)
+### Phase 1 - Durable workflow core (MVP)
 
 - Project management.
 - Workflow definition/versioning.
@@ -879,7 +879,7 @@ Do not create duplicate document roots if the repository already stores product 
 
 **Exit:** Multi-task workflow executes, persists, recovers after restart, and reports outcomes accurately.
 
-### Phase 2 — Providers and safe tools (MVP)
+### Phase 2 - Providers and safe tools (MVP)
 
 - One hosted provider and Ollama adapters.
 - Provider configuration and health checks.
@@ -890,7 +890,7 @@ Do not create duplicate document roots if the repository already stores product 
 
 **Exit:** Model/tool activity is traceable, policy-controlled, and recoverable.
 
-### Phase 3 — Verification and release readiness (MVP)
+### Phase 3 - Verification and release readiness (MVP)
 
 - Deterministic validation framework.
 - Cancellation and timeout handling.
@@ -901,7 +901,7 @@ Do not create duplicate document roots if the repository already stores product 
 
 **Exit:** Critical PRD P0 acceptance criteria pass on supported Windows environment.
 
-### Phase 4 — P1 capabilities
+### Phase 4 - P1 capabilities
 
 - Policy-driven provider routing and fallback.
 - Workflow templates and import/export.
@@ -909,7 +909,7 @@ Do not create duplicate document roots if the repository already stores product 
 - Conversation import and context handoff.
 - Additional provider adapters.
 
-### Phase 5 — Optional integrations and scale
+### Phase 5 - Optional integrations and scale
 
 - MCP gateway.
 - n8n adapter.
