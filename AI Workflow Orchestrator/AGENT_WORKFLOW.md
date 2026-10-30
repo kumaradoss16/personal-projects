@@ -1,8 +1,8 @@
-# AI Agent Workflow — Standard Operating Procedure
+# AI Agent Workflow - Standard Operating Procedure
 
 **Document:** `AGENT_WORKFLOW.md`  
 **Version:** 1.0  
-**Status:** Proposed — binding after project-owner acceptance  
+**Status:** Proposed - binding after project-owner acceptance  
 **Target:** MVP v1.0  
 **Repository:** `kumaradoss16/personal-projects/AI Workflow Orchestrator`  
 **Last reviewed:** 2026-10-30
@@ -59,7 +59,7 @@ No code, schema, dependency, configuration, or contract changes may begin until 
 
 ### 2.1 Required sequence
 
-**Step 1 — Read the task request**
+**Step 1 - Read the task request**
 
 Identify:
 
@@ -71,14 +71,14 @@ Identify:
 
 Rewrite ambiguous requests as a concise understanding statement. Ask a clarifying question if the intended behavior or acceptance criteria cannot be established safely.
 
-**Step 2 — Check repository instructions**
+**Step 2 - Check repository instructions**
 
 - Read root-level `AGENTS.md`, if present.
 - Read any nested `AGENTS.md` that applies to directories being changed.
 - Read relevant contributor instructions, if present.
 - Treat these as additional instructions, not permission to violate project specifications or security rules.
 
-**Step 3 — Read scope and security boundaries**
+**Step 3 - Read scope and security boundaries**
 
 Read:
 
@@ -87,7 +87,7 @@ Read:
 
 Determine whether the requested work is in MVP scope, deferred, explicitly excluded, or security-sensitive. If out of scope, do not implement it. Follow the scope-change process and request an explicit decision.
 
-**Step 4 — Read product and architecture documents**
+**Step 4 - Read product and architecture documents**
 
 Read:
 
@@ -97,7 +97,7 @@ Read:
 
 Identify the product outcome, component ownership, data flow, module boundaries, and architectural constraints relevant to the task.
 
-**Step 5 — Read the approved technology registry**
+**Step 5 - Read the approved technology registry**
 
 Read `TECH_STACK.md` before:
 
@@ -108,7 +108,7 @@ Read `TECH_STACK.md` before:
 
 Inspect current manifests and lockfiles as well. The registry's permitted version range is not permission to upgrade existing dependencies indiscriminately.
 
-**Step 6 — Read the domain contract(s) relevant to the change**
+**Step 6 - Read the domain contract(s) relevant to the change**
 
 Read the relevant specifications before touching their domain:
 
@@ -124,7 +124,7 @@ Read the relevant specifications before touching their domain:
 
 For cross-cutting changes, read every applicable specification. Do not rely on a summary or memory when the repository document is available.
 
-**Step 7 — Inspect the existing implementation**
+**Step 7 - Inspect the existing implementation**
 
 Before editing:
 
@@ -137,7 +137,7 @@ Before editing:
 
 Do not assume that a file, route, function, or dependency exists based only on a document or prior conversation.
 
-**Step 8 — Establish a baseline**
+**Step 8 - Establish a baseline**
 
 Run the narrowest relevant existing checks when practical. Record pre-existing failures separately from failures introduced by the task. Do not modify unrelated code to make the baseline appear clean.
 
@@ -294,13 +294,13 @@ A task is not complete merely because code was written or the application appear
 
 ### 5.1 Required verification sequence
 
-**Step 1 — Review the diff**
+**Step 1 - Review the diff**
 
 - Inspect every changed file.
 - Check for unrelated modifications, accidental deletions, generated noise, debug code, TODO placeholders, secrets, and machine-specific paths.
 - Confirm the diff matches the approved plan.
 
-**Step 2 — Static checks**
+**Step 2 - Static checks**
 
 Run the repository-approved checks that apply:
 
@@ -311,7 +311,7 @@ Run the repository-approved checks that apply:
 
 Do not invent tooling or add a new checker dependency without approval.
 
-**Step 3 — Automated tests**
+**Step 3 - Automated tests**
 
 Run, as applicable:
 
@@ -325,11 +325,11 @@ Run, as applicable:
 
 Use the test framework and commands already defined by repository configuration and `TECH_STACK.md`.
 
-**Step 4 — Build and packaging checks**
+**Step 4 - Build and packaging checks**
 
 For changes affecting runtime, dependencies, native integration, frontend bundling, or packaging, run the relevant build. Verify that the packaged configuration does not accidentally enable debug behavior or broaden network exposure.
 
-**Step 5 — Security and data-integrity review**
+**Step 5 - Security and data-integrity review**
 
 For applicable changes, verify:
 
@@ -342,7 +342,7 @@ For applicable changes, verify:
 - Failure and cancellation paths do not report false success.
 - External side effects are reconciled rather than blindly repeated.
 
-**Step 6 — Regression and acceptance review**
+**Step 6 - Regression and acceptance review**
 
 Map each acceptance criterion to a test, command, or explicit manual verification. Confirm no unrelated behavior changed.
 
@@ -485,16 +485,16 @@ If `AGENTS.md` is later introduced, keep its repository-level instructions consi
 
 The mandatory lifecycle is:
 
-1. **Intake** — understand the request and acceptance criteria.
-2. **Load context** — read applicable repository instructions and specifications in the prescribed order.
-3. **Inspect** — understand the current implementation, tests, Git state, and baseline.
-4. **Classify** — determine scope, risk, and approval requirements.
-5. **Plan** — present implementation steps, impact, risks, and verification.
-6. **Obtain approval** — wait at mandatory human approval gates.
-7. **Implement** — make the smallest approved incremental changes.
-8. **Verify** — run relevant static checks, tests, builds, and security reviews.
-9. **Review** — inspect the complete diff and confirm acceptance criteria.
-10. **Handoff** — report files, decisions, tests, limitations, and Git status accurately.
+1. **Intake** - understand the request and acceptance criteria.
+2. **Load context** - read applicable repository instructions and specifications in the prescribed order.
+3. **Inspect** - understand the current implementation, tests, Git state, and baseline.
+4. **Classify** - determine scope, risk, and approval requirements.
+5. **Plan** - present implementation steps, impact, risks, and verification.
+6. **Obtain approval** - wait at mandatory human approval gates.
+7. **Implement** - make the smallest approved incremental changes.
+8. **Verify** - run relevant static checks, tests, builds, and security reviews.
+9. **Review** - inspect the complete diff and confirm acceptance criteria.
+10. **Handoff** - report files, decisions, tests, limitations, and Git status accurately.
 
 An agent must return to the planning/approval step if implementation reveals a material change in scope, risk, architecture, dependencies, or data behavior.
 
